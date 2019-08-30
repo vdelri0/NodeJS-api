@@ -9,5 +9,8 @@
   },
   "keywords": [],
   "author": "Victor Del Rio <vprens12@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
