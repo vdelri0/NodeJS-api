@@ -6,20 +6,18 @@ const app = express();
 
 app.use(bodyparser.json());
 
-const mysqlConnection = mysql.createConnection({
+const mysqlConnection = mysql.createPool({
   host: 'us-cdbr-iron-east-02.cleardb.net',
   user: 'bd39e805445917',
   password: 'f439716e',
   database: 'heroku_99ecfa2d2c08fa4'
 });
 
-mysqlConnection.connect((err) => {
+mysqlConnection.getConnection((err) => {
   if (!err)
     console.log('DB connection succeded.')
   else
     console.log('DB connection failed \n Error: ' + JSON.stringify(err, undefined, 2));
-
-
 });
 
 app.listen(port, () => console.log(`listening on port ${port}..`));
@@ -75,7 +73,7 @@ app.post('/api/items', (req, res) => {
 
 //Update an item
 app.put('/api/items', (req, res) => {
-  mysqlConnection.query('UPDATE items SET ? WHERE iditem = ?', [req.body,req.body.iditem], (err, rows, fields) => {
+  mysqlConnection.query('UPDATE items SET ? WHERE iditem = ?', [req.body, req.body.iditem], (err, rows, fields) => {
     if (!err)
       res.send(`Item ${req.body.iditem} updated succesfully.`)
     else
@@ -129,7 +127,7 @@ app.post('/api/carts', (req, res) => {
 
 //Update an cart
 app.put('/api/carts', (req, res) => {
-  mysqlConnection.query('UPDATE carts SET ? WHERE idcart = ?', [req.body,req.body.idcart], (err, rows, fields) => {
+  mysqlConnection.query('UPDATE carts SET ? WHERE idcart = ?', [req.body, req.body.idcart], (err, rows, fields) => {
     if (!err)
       res.send(`Cart ${req.body.idcart} updated succesfully.`)
     else
@@ -184,7 +182,7 @@ app.post('/api/orders', (req, res) => {
 
 //Update an order
 app.put('/api/orders', (req, res) => {
-  mysqlConnection.query('UPDATE orders SET ? WHERE idorder = ?', [req.body,req.body.idorder], (err, rows, fields) => {
+  mysqlConnection.query('UPDATE orders SET ? WHERE idorder = ?', [req.body, req.body.idorder], (err, rows, fields) => {
     if (!err)
       res.send(`Order ${req.body.idorder} updated succesfully.`)
     else
