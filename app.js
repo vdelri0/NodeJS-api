@@ -25,7 +25,7 @@ app.listen(port, () => console.log(`listening on port ${port}..`));
 
 
 app.get('/', (req, res) => {
-  res.send(`hello world!! ${port}`);
+  res.send(`Blackthorn API running on port ${port}`);
 });
 
 //Request service for test loader.io file
