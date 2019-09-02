@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyparser = require('body-parser');
 const mysql = require('mysql');
+const path = require('path');
 const port = process.env.PORT || 3000;
 const app = express();
 
@@ -25,6 +26,11 @@ app.listen(port, () => console.log(`listening on port ${port}..`));
 
 app.get('/', (req, res) => {
   res.send(`hello world!! ${port}`);
+});
+
+//Request service for test loader.io file
+app.get('/loaderio-f6ce126d6f59b2c5449979d6489a3a15.txt', (req, res) => {
+  res.sendFile('loaderio-f6ce126d6f59b2c5449979d6489a3a15.txt', { root: path.join(__dirname) });
 });
 
 /**
