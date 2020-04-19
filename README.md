@@ -1,4 +1,4 @@
-# Blackthorn-API
+# NodeJS-API
 
 This project was created using [Node](https://nodejs.org/en/) version 10.16.3 and [MySQL](https://www.mysql.com) version 5.5.62, it also    makes use of some npm packages like [express](https://www.npmjs.com/package/express) version 4.17.1, [body-parser](https://www.npmjs.com/package/body-parser) version 1.19.0 and [mysql](https://www.npmjs.com/package/mysql) version 2.17.1.
 
